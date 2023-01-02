@@ -62,6 +62,7 @@ const AuthWrapper: React.FC<{ children: JSX.Element; auth: any }> = ({
   }
 
   return children;
+  //auth가 되어있는지 확인함으로써 children을 뱉을지 안뱉을지 결정하는군
 };
 
 export default AuthWrapper;

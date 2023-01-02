@@ -32,6 +32,14 @@ declare global {
   }
 }
 
+//지금부터 공부를 시작해나간다. 어려울지 모르겠지만 나는 포기하지않아 임준하니까 지고싶지않으니까 누구에게도 무조건 이 기술을 내 것으로 만들겠어
+
+//어디서부터 먹어치워야할까
+
+//pages부터 먹으면서 왔다갔다 존나 할거같다
+
+
+
 declare module "next-auth" {
   interface Session {
     accessToken: any;
