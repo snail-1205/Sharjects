@@ -26,8 +26,6 @@ declare module "@mui/material/styles" {
   interface Palette extends CustomPalette {}
   interface PaletteOptions extends Partialize<CustomPalette> {}
 }
-//이거이거 아주 흥미롭군. 갑자기 declare를 하더니 module까지 박아버리네
-//여기서 declare해버리면 다른 파일까지 영향을 미치는건지 아니면 여기서만 영향을 미치는건지 흠흠..
 
 type ColorPalette = Exclude<keyof typeof Colors, "common">;
 //Colors를 mui로부터 가져와서 그냥 걸러버리네
@@ -58,13 +56,14 @@ const getDesignTokens = (mode: PaletteMode, palette: ColorPalette) =>
 //primary, themedBlack, themeWhite, text를 추가로 가지는데
 //그냥 나중에 쓰일거같군 이름이 디자인의 토큰을 얻게한거라는데 흠흠..
 
+//token이라고 표현하신 이유? 이러한 Theme의 document?
+
 interface ThemeController {
   toggleColorMode(): void;
   setColorPalette(value: ColorPalette): void;
   currentColors: typeof Colors[ColorPalette];
   palette: ColorPalette;
 }
-//콘트롤러를 하나 만드는구만.. 이렇게 만들어진 콘트롤러는 createContext에 들어가서 COntext 객체를하나 만들어내는구만
 const ControllerContext = React.createContext<ThemeController>({
   toggleColorMode: () => {
     throw new Error("subscribed out of provider!");
@@ -114,6 +113,7 @@ const MainThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
     <ControllerContext.Provider value={defaultControllerContext}>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ControllerContext.Provider>
+    //이 복잡한 구조를 알 수가 없군요 ㅜㅜ
   );
 };
 

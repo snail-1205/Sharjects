@@ -52,6 +52,20 @@ declare module "notistack" {
   }
 }
 
+/**
+ * 얘네도 궁금하네요 ㅋㅋ declare module이란 문버은 처음봐서요
+ *
+ * declare는 아시나용
+ *
+ * 사실 delcare도 잘 모릅니다아하 타입스크립트에서만 있는 거군요 알아먹게 하는거군요 아하 무슨느낌인지 알거같아요 근데 index.ts 가 아니고 왜 index.d.ts를 쓰셨나용
+ *아하 declareation이 모여있다고 그냥 말해주는거군요 ts로 써도 문제느 ㄴ없지요?? 아하 네넵 그러면 수고하셨습니다 이제  카톡으로 다시
+ * declare는 실제로 존재하지 않는 값에 대해서 타입만 타입스크립트에게 강제로 선언(delcare)해줘서 얘가 이게 존재한다는걸 알아먹게 하기 위한거에요
+ * declare module는 그 모듈에 이 타입이 있다는걸 알아먹기 하기 위한거
+ * d(declare).ts 약자
+ * 네 상관없어요 어차피 이런 타입들은 컴파일하면 하나도 빠짐없이 다 사라짐
+ * 어우 고생하셨습니다 ㄱㄱ
+ */
+
 export type listAnimatonRefType = {
   list: Array<(delay: number) => void>;
 };

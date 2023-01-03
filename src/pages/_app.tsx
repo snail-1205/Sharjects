@@ -69,34 +69,26 @@ const MyApp: React.FC<MyAppProps> = ({
   //여기가 _app.tsx라는걸 다시 상기시켜주는군.. 라우터를 /404로 바꾸는군
   if (Component.notPage) return <></>;
 
-  //if문으로 한번 절차를 밟는군 만약 페이지가 없다면 밑의 효과들이 아무것도 적용되지 않을 것이다.
-
   return (
     <CacheProvider value={emotionCache}>
-      {/* 너뭐야 아 원래있는애구나*/}
-
       <Head>
         <title>Sharlotte's Portfolio</title>
         {/* 여기는 평범하군 title, meta-name. 그리고 content*/}
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <MainThemeProvider>
-        {/* 너 뭐야 테마를 상태적으로 관리하기 위해서였군*/}
-
-        {/* cache와 theme를 받고, Css도 받고, Session도 받고, Snackbar, AuthWrapper, 그냥 엄청많이 발라버리는군*/}
-
         <CssBaseline />
         <SessionProvider session={session}>
           {/* 너뭐야 원래있는애구만*/}
 
           <SnackbarProvider
             maxSnack={3}
-            Components={{ lifebar: LifebarSnackbar }}
+            Components={{ lifebar: LifebarSnackbar }} //여기 예 맞습니다 라이브러리 문서 드릴까요//아하 여기서 주입하면 저기서도 쓸수있게도니ㅡㄴ거군요 네넵 예쁘더라고요
+            //https://notistack.com/features/customization
+            //이거 child requirements 꼭 참고하세요. LifebarSnackbar도 requirement 맞춰서 한거
           >
             {/* 스낵바를 위해 무언가 주는거구만*/}
             <AuthWrapper auth={Component.auth}>
-              {/* authWrapper 넌 누구냐*/}
-
               <GithubStaticDataContext>
                 <AnimatePresence>
                   <Component {...pageProps} />
