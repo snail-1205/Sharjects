@@ -24,6 +24,9 @@ declare module "@mui/material/styles" {
   interface PaletteOptions extends Partialize<CustomPalette> {}
 }
 
+//여기서 declare module을 하는 이유? @types에도 있던데
+//Partialize의 용도와 이렇게 declare된 모듈들은 어떻게 되는가
+
 type ColorPalette = Exclude<keyof typeof Colors, "common">;
 const getDesignTokens = (mode: PaletteMode, palette: ColorPalette) =>
   ({
@@ -48,12 +51,15 @@ const getDesignTokens = (mode: PaletteMode, palette: ColorPalette) =>
     },
   } as Theme);
 
+//token이라고 표현하신 이유? 이러한 Theme의 document?
+
 interface ThemeController {
   toggleColorMode(): void;
   setColorPalette(value: ColorPalette): void;
   currentColors: typeof Colors[ColorPalette];
   palette: ColorPalette;
 }
+//controller의 역할, 만든 이유
 const ControllerContext = React.createContext<ThemeController>({
   toggleColorMode: () => {
     throw new Error("subscribed out of provider!");
@@ -99,6 +105,7 @@ const MainThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
     <ControllerContext.Provider value={defaultControllerContext}>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ControllerContext.Provider>
+    //이 복잡한 구조를 알 수가 없군요 ㅜㅜ
   );
 };
 
